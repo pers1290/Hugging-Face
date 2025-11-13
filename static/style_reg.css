@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0C0D14;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    line-height: 1.5;
+    position: relative;
+}
+
+.circles-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.white-circle {
+    z-index: 1;
+}
+
+.purple-circle {
+    z-index: 2;
+    opacity: 0.8;
+}
+
+.signin-container {
+    background-color: #0C0D14;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(238, 0, 255, 0.08);
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    z-index: 3;
+}
+
+.welcome-text {
+    text-align: left;
+    margin-bottom: 35px;
+}
+
+.welcome-text h1 {
+    color: #ffffff;
+    margin-bottom: 12px;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.welcome-text p {
+    color: #FFFFFF75;
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.signin-form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.form-group input {
+    width: 100%;
+    color: white;
+    padding: 14px 16px;
+    border: 2px solid #6a3dcb;
+    border-radius: 50px;
+    font-size: 18px;
+    background-color: #0C0D14;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #6a3dcb;
+    background-color: #0C0D14;
+    box-shadow: 0 0 0 3px rgba(106, 61, 203, 0.2);
+}
+
+.form-group input:hover {
+    border-color: #88459b;
+}
+
+.signin-button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #ffffff, #ffffff);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.signin-button:hover {
+    background: linear-gradient(135deg, #88459b, #88459b);
+    color: white;
+    box-shadow: 0 4px 12px rgba(202, 52, 219, 0.3);
+    transform: translateY(-2px);
+}
+
+.signin-button:active {
+    transform: translateY(0);
+}

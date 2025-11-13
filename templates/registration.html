@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="static/style_reg.css">
+</head>
+
+<body>
+    <div class="circles-container">
+        <div class="circle white-circle">
+            <img src="static/Ellipse 8.png" alt="White circle">
+        </div>
+        
+        <div class="circle purple-circle">
+            <img src="static/Ellipse 10.png" alt="Purple circle">
+        </div>
+    </div>
+
+    <div class="signin-container">
+        <div class="welcome-text">
+            <h1>Sign in</h1>
+            <p>Hi and welcome back! We hope you had a great day!</p>
+        </div>
+        {% if system_error %}
+        <div class="error-message system-error">
+            {{ system_error }}
+        </div>
+        {% endif %}
+        
+        <form class="signin-form" method="POST" action="{{ url_for('registration') }}">
+            <!-- Поле для имени пользователя -->
+            <div class="form-group">
+                <label for="firstname">Username</label>
+                <input type="text" id="firstname" name="firstname" value="{{ value_1 }}" required>
+                {% if error_1 %}
+                <div class="error-message">{{ error_1 }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Поле для email -->
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" value="{{ value_3 }}" required>
+                {% if error_3 %}
+                <div class="error-message">{{ error_3 }}</div>
+                {% endif %}
+            </div>
+
+            <!-- Поле для пароля -->
+            <div class="form-group">
+                <label for="pasvord">Password</label>
+                <input type="password" id="pasvord" name="pasvord" value="{{ value_2 }}" required>
+                {% if error_2 %}
+                <div class="error-message">{{ error_2 }}</div>
+                {% endif %}
+            </div>
+            
+            <button type="submit" class="signin-button">Sign in</button>
+        </form>
+    </div>
+</body>
+</html>
