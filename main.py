@@ -34,7 +34,7 @@ with app.app_context():
 
 @app.route('/')
 def home():
-    return redirect(url_for('registration'))
+    return redirect(url_for('login'))
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -53,7 +53,7 @@ def login():
         else:
             flash('Неверное имя пользователя или пароль')
 
-    return render_template('vxod.html')
+    return render_template('login.html')
 
 @app.route('/registration', methods=['POST', 'GET'])
 def registration():

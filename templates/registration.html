@@ -3,32 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
-    <link rel="stylesheet" href="static/style_reg.css">
+    <title>Registration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_reg.css') }}">
 </head>
 
 <body>
     <div class="circles-container">
         <div class="circle white-circle">
-            <img src="static/Ellipse 8.png" alt="White circle">
+            <img src="{{ url_for('static', filename='Ellipse 8.png') }}" alt="White circle">
         </div>
-        
+
         <div class="circle purple-circle">
-            <img src="static/Ellipse 10.png" alt="Purple circle">
+            <img src="{{ url_for('static', filename='Ellipse 10.png') }}" alt="Purple circle">
         </div>
     </div>
 
     <div class="signin-container">
         <div class="welcome-text">
-            <h1>Sign in</h1>
-            <p>Hi and welcome back! We hope you had a great day!</p>
+            <h1>Registration</h1>
+            <p>Create your account to get started!</p>
         </div>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="error-message system-error">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
         {% if system_error %}
         <div class="error-message system-error">
             {{ system_error }}
         </div>
         {% endif %}
-        
+
         <form class="signin-form" method="POST" action="{{ url_for('registration') }}">
             <!-- Поле для имени пользователя -->
             <div class="form-group">
@@ -56,9 +67,13 @@
                 <div class="error-message">{{ error_2 }}</div>
                 {% endif %}
             </div>
-            
-            <button type="submit" class="signin-button">Sign in</button>
+
+            <button type="submit" class="signin-button">Register</button>
         </form>
+
+        <div class="login-link">
+            <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+        </div>
     </div>
 </body>
 </html>
