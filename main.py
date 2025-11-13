@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request, session
+from flask import Flask, render_template, redirect, url_for, request, session, flash
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 import sqlite3
@@ -36,6 +36,24 @@ with app.app_context():
 def home():
     return redirect(url_for('registration'))
 
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+        user = User.query.filter_by(username=username).first()
+
+        if user and check_password_hash(user.password, password):
+            session.permanent = True
+            session['name'] = user.username
+            session['user_id'] = user.id
+            return redirect(url_for('personal_account'))
+        else:
+            flash('Неверное имя пользователя или пароль')
+
+    return render_template('vxod.html')
 
 @app.route('/registration', methods=['POST', 'GET'])
 def registration():
