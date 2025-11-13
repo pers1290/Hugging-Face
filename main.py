@@ -5,7 +5,7 @@ import sqlite3
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5457fae2a71f9331bf4bf3dd6813f90abeb33839f4608755ce301b9321c6'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pp3.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
@@ -51,7 +51,7 @@ def login():
             session['user_id'] = user.id
             return redirect(url_for('personal_account'))
         else:
-            flash('Неверное имя пользователя или пароль')
+            flash('Invalid username or password')
 
     return render_template('login.html')
 
@@ -80,11 +80,11 @@ def registration():
 
         # Валидация данных
         if not username:
-            error_1 = 'Введите имя пользователя'
+            error_1 = 'Enter the user name'
         if not email:
-            error_3 = 'Введите адрес электронной почты'
+            error_3 = 'Enter your email address'
         if not password:
-            error_2 = 'Введите пароль'
+            error_2 = 'Enter the password'
 
         # Если есть ошибки валидации, возвращаем форму с ошибками
         if any([error_1, error_2, error_3]):
@@ -101,9 +101,9 @@ def registration():
 
             if existing_user:
                 if existing_user.username == username:
-                    error_1 = 'Имя пользователя уже занято'
+                    error_1 = 'The username is already taken'
                 if existing_user.email == email:
-                    error_3 = 'Email уже зарегистрирован'
+                    error_3 = 'email has already been registered'
 
                 return render_template('registration.html',
                                        error_1=error_1, error_2=error_2, error_3=error_3,
@@ -125,19 +125,41 @@ def registration():
             session.permanent = True
             session['name'] = username
             session['email'] = email
+            session['user_id'] = new_user.id  # ДОБАВЛЕНО: сохраняем ID пользователя
 
-            return redirect("/personal_account")
+            return redirect("/personal_account") # ФАЙЛ С ЗАПРОСАМИ
 
         except Exception as e:
             db.session.rollback()
-            system_error = f'Произошла ошибка при регистрации: {str(e)}'
+            system_error = f'A registration error: {str(e)}'
             return render_template('registration.html',
                                    error_1=error_1, error_2=error_2, error_3=error_3,
                                    system_error=system_error,
                                    value_1=value_1, value_2=value_2, value_3=value_3)
 
 
+@app.route('/personal_account')
+def personal_account():
+    if 'name' not in session:  # ИСПРАВЛЕНО: проверяем только имя
+        flash('Пожалуйста, войдите в систему')
+        return redirect(url_for('login'))
 
+    # Получаем user_id из сессии или из базы данных
+    user_id = session.get('user_id')
+    if not user_id:
+        # Если user_id нет в сессии, получаем его из базы данных
+        user = User.query.filter_by(username=session['name']).first()
+        if user:
+            user_id = user.id
+            session['user_id'] = user_id  # Сохраняем в сессии на будущее
+        else:
+            flash('Ошибка: пользователь не найден')
+            return redirect(url_for('login'))
+
+    user_history = History.query.filter_by(user_id=user_id).all()
+    return render_template('personal_account.html',
+                           username=session['name'],
+                           history=user_history)
 
 if __name__ == '__main__':
     app.run(debug=True) # Запускаем сайт

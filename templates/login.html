@@ -28,7 +28,8 @@
             {% if messages %}
                 {% for message in messages %}
                     <div class="error-message system-error">
-                        {{ message }}
+                        <p style="color: white;" >{{ message }}</p>
+                        <br>
                     </div>
                 {% endfor %}
             {% endif %}
@@ -49,9 +50,9 @@
 
             <button type="submit" class="signin-button">Login</button>
         </form>
-
+        <br>
         <div class="registration-link">
-            <p>Don't have an account? <a href="{{ url_for('registration') }}">Register here</a></p>
+            <p style="color: white;" >Don't have an account? <a href="{{ url_for('registration') }}">Register here</a></p>
         </div>
     </div>
 </body>
