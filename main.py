@@ -13,18 +13,47 @@ db = SQLAlchemy(app)
 
 # Описание таблиц
 class User(db.Model):
+    __tablename__ = 'users'
+
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     lg = db.Column(db.Integer, default=0)
 
+    chat_sessions = db.relationship('ChatSession', backref='user', lazy=True)
 
-class History(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, nullable=False)
-    question = db.Column(db.Text, nullable=False)
-    answer = db.Column(db.Text, nullable=False)
+class AI_model(db.Model):
+    __tablename__ = 'AI_model'
+
+    ai_id = db.Column(db.Integer, primary_key=True)
+    ai_name = db.Column(db.String(100), nullable=False)
+    token = db.Column(db.String(255), nullable=False)
+    limit = db.Column(db.Integer)
+
+    # Связь: одна AI модель используется во многих чат-сессиях
+    chat_sessions = db.relationship('ChatSession', backref='ai_model', lazy=True)
+
+
+class ChatSession(db.Model):
+    __tablename__ = 'chat_session'
+
+    s_id = db.Column(db.Integer, primary_key=True)
+    s_u_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    s_ai_id = db.Column(db.Integer, db.ForeignKey('AI_model.ai_id'), nullable=False)
+    title = db.Column(db.String(255), nullable=False)
+
+    # Связь: одна чат-сессия содержит много сообщений
+    messages = db.relationship('Message', backref='chat_session', lazy=True)
+
+
+class Message(db.Model):
+    __tablename__ = 'messages'
+
+    m_id = db.Column(db.Integer, primary_key=True)
+    m_s_id = db.Column(db.Integer, db.ForeignKey('chat_session.s_id'), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+    role = db.Column(db.String(50), nullable=False)
 
 
 # Создание таблиц
@@ -156,10 +185,10 @@ def personal_account():
             flash('Ошибка: пользователь не найден')
             return redirect(url_for('login'))
 
-    user_history = History.query.filter_by(user_id=user_id).all()
+    user_chat_sessions = ChatSession.query.filter_by(s_u_id=user_id).all()
     return render_template('personal_account.html',
                            username=session['name'],
-                           history=user_history)
+                           chat_sessions=user_chat_sessions)
 
 if __name__ == '__main__':
     app.run(debug=True) # Запускаем сайт
