@@ -154,6 +154,5 @@ def get_ai_response(question, thinking=True, api_keys=None):
     model = AdvancedSmolLM3(api_keys)
     return model.ask(question, thinking=thinking)
 
-print(get_ai_response("что такое искуственный интелект"))
 
 
