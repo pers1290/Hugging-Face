@@ -1,0 +1,504 @@
+.kumbh-sans-header{
+  font-family: "Kumbh Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings:
+    "YOPQ" 300;
+}
+
+html{
+    box-sizing: border-box;
+}
+*, *::before, *::after{
+    box-sizing: inherit;
+
+}
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+
+body{
+    min-height: 100vh;
+    font-family: 'Kumbh Sans';
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.2;
+    font-weight: normal;
+    color: white;
+    background-color: #0C0D14;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#contact {
+    scroll-margin-top: 80px;
+}
+
+.sidebar {
+    display: none;
+}
+
+.sidebar.active {
+    display: flex;
+}
+
+/* header*/
+
+.header{
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(12, 13, 20, 0.60);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+ul {
+    list-style-type: none; 
+    padding: 0;            
+    margin: 0;             
+}
+
+.header_wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-top: 32px;
+}
+
+.header_nav{
+    width: 91%;
+}
+
+.header_list{
+
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 101px;
+
+}
+
+.head_itemHide{
+
+    height: 100%;
+    margin-right: 64px;
+    cursor: pointer;
+}
+
+.head_itemHide:last-child{
+    margin-right: 0;
+}
+
+.header_link{
+
+    font-family: 'Kumbh Sans';
+    font-weight: 300;
+    font-size: 24px;
+    position: relative;
+    text-decoration: none;          
+    color: #838383;
+    padding-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+.header_link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: #FFFFFF;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.header_link:hover::after,
+.header_link:focus::after {
+    width: 100%;
+}
+
+.header_link:hover {
+    color: #FFFFFF;
+}
+
+.signInHide {
+    
+    background-color: white; 
+    width: 118px;           
+    height: 38px;      
+    color: #2C1E1E;                       
+    border-radius: 15px;  
+    font-family: 'Kumbh Sans';
+    font-weight: 800;        
+    font-size: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;            
+    transition: all 0.3s ease;
+    margin-left: auto;
+}
+
+.signInHide:hover {
+    background-color: #6337C9;  
+    color: white;                
+}
+
+.sidebar{
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 2000;
+    background: rgba(12, 13, 20, 0.7);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-left: 20px;
+    padding-top: 30px;
+    transform: translateX(100%);  
+    transition: transform 0.3s ease-out;
+}
+
+.sidebar.active {
+    transform: translateX(0);
+}
+.sidebar li{
+    width: 100%;
+    height: 60px;
+    
+}
+.sign-in1 {
+    
+    background-color: white; 
+    width: 118px;           
+    height: 38px;      
+    color: #2C1E1E;                       
+    border-radius: 15px;  
+    font-family: 'Kumbh Sans';
+    font-weight: 800;        
+    font-size: 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;            
+    transition: all 0.3s ease;
+}
+
+.sign-in1:hover {
+    background-color: #6337C9;  
+    color: white;                
+}
+
+.menu-button{
+    display: none;
+}
+
+/* header*/
+
+
+
+
+.wrapper{
+    max-width: 1153px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+
+
+
+/*main*/
+
+.main{
+
+    display: flex;
+    flex-direction: column;
+    background: url(../img/glow-eff.png);
+    background-position: center 8%;
+    background-size: contain;  
+    background-repeat: no-repeat;   
+}
+
+
+/* .background-container {
+    position: relative;
+    display: flex;
+    gap: 1793px; 
+    justify-content: center;
+    align-items: center;
+} */
+
+.img-container {
+    background: url(../img/glow-eff.png);
+    background-position: center 90%;
+    background-size: contain;  
+    background-repeat: no-repeat;
+    position: relative;
+
+}
+
+
+
+
+/*intro*/
+.intro{
+    min-height: 100vh;   
+    padding-top: 200px;
+    text-align: center;
+    padding-bottom: 744px;
+}
+
+.mini_title{
+
+    font-weight: 200;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.title{
+
+    font-weight: 500;
+    font-size: 96px;
+    margin: 0%;
+}
+
+
+
+.hero_title{
+    font-weight: 500;
+    font-size: 48px;
+    margin-bottom: 69px;
+    text-align: center;
+}
+
+.hero_text{
+    font-weight: 300;
+    font-size: 32px;
+    max-width: 1065px;
+    text-align: center;
+    margin-bottom: 62px;
+}
+
+.hero .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.start_button{
+    background: linear-gradient(90deg, rgba(14, 6, 44, 0.367), 
+    rgba(115, 115, 115, 0.05));
+    backdrop-filter: blur(10px);
+    font-weight: 500;
+    font-size: 32px;
+    color: rgb(255, 255, 255);
+    width: 297px;           
+    height: 86px;                            
+    border-radius: 200px;  
+    border: none;
+    outline: none;
+    cursor: pointer;  
+    border: 1px solid rgba(132, 120, 255, 0.3);
+    transition: all 0.3s ease; 
+    margin-bottom: 191px;
+    
+}
+.start_button:hover {
+    background: linear-gradient(90deg, rgba(138, 94, 255, 0.15), rgba(117, 70, 255, 0.15));
+    border: 1px solid #b39dff;
+    box-shadow: 0 0 15px rgba(138, 94, 255, 0.5),
+                0 0 30px rgba(117, 70, 255, 0.3),
+                inset 0 0 15px rgba(255, 255, 255, 0.1);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);            
+}
+/*intro*/
+
+
+
+/*preview*/
+.preview_title{
+
+    font-weight: 500;
+    font-size: 48px;
+    margin-bottom: 70px;
+    text-align: center;
+}
+.preview_cards{
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 41px;
+    padding: 0 28px;
+    margin-bottom: 164px;
+}
+.preview_card{
+
+    grid-column: span 1;
+    background: rgb(0, 0, 0, 0,05);
+    border: 1px solid rgba(132, 120, 255, 0.3);
+    padding: 0 24px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    border-radius: 30px;
+}
+
+
+.preview_card_title{
+
+    font-weight: 600;
+    font-size: 32px;
+
+}
+.preview_card_desc1{
+
+    max-width: 400px;
+    font-weight: 300;
+    font-size: 24px;
+
+}
+.preview_card_desc2{
+
+    max-width: 400px;
+    font-weight: 300;
+    font-size: 24px;
+
+}
+.preview_card_desc3{
+
+    max-width: 319px;
+    font-weight: 300;
+    font-size: 24px;
+
+}
+
+
+
+.sidebar {
+    /* добавьте это */
+    pointer-events: auto;
+}
+
+/* При открытом сайдбаре добавляем overlay на body */
+body.sidebar-open {
+    overflow: hidden;
+}
+/*preview*/
+
+
+
+/*how to use*/
+.how_to_use_title{
+
+    font-weight: 500;
+    font-size: 48px;
+    margin-bottom: 175px;
+    text-align: center;
+
+}
+.steps{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-weight: 300;
+    font-size: 28px;
+    margin-bottom: 50px;
+    max-width: 534px;
+}
+.steps:last-child{
+    margin-bottom: 200px;
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.try_button {
+
+    margin-top: 70px;
+    background-color: white; 
+    width: 180px;           
+    height: 49px;      
+    color: #2C1E1E;                       
+    border-radius: 15px;  
+    font-family: 'Kumbh Sans';
+    font-weight: 800;        
+    font-size: 24px;
+    border: none;
+    outline: none;
+    cursor: pointer;            
+    transition: all 0.3s ease; 
+    margin-bottom: 400px;
+
+}
+
+.try_button:hover{
+
+    background-color: #6337C9; 
+    color: white;
+
+}
+
+/*how to use*/
+
+
+
+.contact_title{
+
+    font-weight: 500;
+    margin-bottom: 34px;
+    font-size: 48px;
+    text-align: center;
+}
+.contact_desc{
+
+    font-weight: 300;
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 67px;
+
+}
+
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 137px;
+}
+
+.social-link img {
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(1); 
+    transition: 0.3s;
+}
+
+.social-link img:hover {
+    transform: scale(1.15);
+    filter: brightness(10) 
+            drop-shadow(0 0 1px #7546ff)
+            drop-shadow(0 0 2px #7546ff)
+            drop-shadow(0 0 3px #9d7aff);
+}
+
+/*main*/
