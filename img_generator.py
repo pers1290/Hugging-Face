@@ -60,13 +60,13 @@ def generate_image(russian_prompt, style="реализм", num_inference_steps=2
         ).images[0]
 
     generation_time = time.time() - start_time
-    print(f"Время генерации: {generation_time:.1f} сек")
+    # print(f"Время генерации: {generation_time:.1f} сек")
 
     # Сохраняем изображение
     if save_image:
         filename = f"output_{hash(russian_prompt) % 10000}.png"
         image.save(filename)
-        print(f"Изображение сохранено как: {filename}")
+        # print(f"Изображение сохранено как: {filename}")
 
     return image
 
