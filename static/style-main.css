@@ -237,13 +237,6 @@ ul {
 }
 
 
-/* .background-container {
-    position: relative;
-    display: flex;
-    gap: 1793px; 
-    justify-content: center;
-    align-items: center;
-} */
 
 .img-container {
     background: url(/static/glow-eff.png);
@@ -392,11 +385,11 @@ ul {
 
 
 .sidebar {
-    /* добавьте это */
+  
     pointer-events: auto;
 }
 
-/* При открытом сайдбаре добавляем overlay на body */
+
 body.sidebar-open {
     overflow: hidden;
 }
@@ -500,5 +493,6 @@ body.sidebar-open {
             drop-shadow(0 0 2px #7546ff)
             drop-shadow(0 0 3px #9d7aff);
 }
+
 
 /*main*/
