@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href ="css/style-main.css">
-    <link rel="stylesheet" href ="css/media-main.css">
+    <link rel="stylesheet" href ="static/style-main.css">
+    <link rel="stylesheet" href ="static/media-main.css">
     
 
 </head>
@@ -23,15 +23,15 @@
                 <nav class="header_nav"> 
                     <ul class="header_list">
                         <li class="head_itemHide">
-                            <a href="" class="header_link">text</a>
+                            <a href="{{ url_for('personal_account') }}" class="header_link">text</a>
                         </li>
                         <li class="head_itemHide">
-                            <a href="" class="header_link">image</a>
+                            <a href="{{ url_for('personal_account') }}" class="header_link">image</a>
                         </li>
                         <li class="head_itemHide">
                             <a href="#contact" class="header_link">contact</a>
                         </li>
-                        <button class="signInHide">Sign in</button>
+                        <button class="signInHide" onclick="window.location.href='{{ url_for('login') }}'">Sign in</button>
                         <li onclick="showSidebar()" class="menu-button">
                             <a onclick="event.preventDefault()">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px" fill="#FFFFFF">
@@ -55,10 +55,10 @@
                 </a>
             </li>
             <li class="head_item">
-                <a href="" class="header_link" onclick="hideSidebar()">text</a>
+                <a href="{{ url_for('personal_account') }}" class="header_link" onclick="hideSidebar()">text</a>
             </li>
             <li class="head_item">
-                <a href="" class="header_link" onclick="hideSidebar()">image</a>
+                <a href="{{ url_for('personal_account') }}" class="header_link" onclick="hideSidebar()">image</a>
             </li>
             <li class="head_item">
                 <a href="#contact" class="header_link" onclick="hideSidebar()">contact</a>
@@ -79,7 +79,7 @@
             <div class="wrapper">
                 <h2 class="hero_title">Create anything with Open-Source AI</h2>
                 <p class="hero_text">Text that comes alive. Images shaped by your imagination. AI transforms inspiration into reality.</p>
-                <button class="start_button">START NOW</button>
+                <button class="start_button" onclick="window.location.href='{{ url_for('personal_account') }}'">START NOW</button>
             </div>
         </section>
 
@@ -89,7 +89,7 @@
                 <div class="preview_cards">
                     <div class="preview_card">
                         <div class="preview_card_pic">
-                            <img src="./img/SVG/write-icon.svg" alt="Write" class="preview_icon1">
+                            <img src="static/write-icon.svg" alt="Write" class="preview_icon1">
                         </div>
                         <h3 class="preview_card_title">Write</h3>
                         <p class="preview_card_desc1">
@@ -98,7 +98,7 @@
                     </div>
                     <div class="preview_card">
                         <div class="preview_card_pic">
-                            <img src="./img/SVG/visualize-icon.svg" alt="Visualize" class="preview_icon1">
+                            <img src="static/visualize-icon.svg" alt="Visualize" class="preview_icon1">
                         </div>
                         <h3 class="preview_card_title">Visualize</h3>
                         <p class="preview_card_desc2">
@@ -119,7 +119,7 @@
                         <p class="step3">Hit Generate - get results in seconds</p>
                     </div>
                     <div class="button-container">
-                        <button class="try_button">Try now</button>
+                        <button class="try_button" onclick="window.location.href='{{ url_for('personal_account') }}'">Try now</button>
                     </div>
                 </div>    
             </section>
@@ -133,13 +133,13 @@
 
                 <div class="social-links">
                     <a href="https://t.me/tablelchilliXx" target="_blank" class="social-link">
-                        <img src="./img/SVG/telegram.svg" alt="Telegram">
+                        <img src="static/telegram.svg" alt="Telegram">
                     </a>
                     <a href="https://instagram.com/Eliiiiiiizaveta_06" target="_blank" class="social-link">
-                        <img src="./img/SVG/instagram.svg" alt="Instagram">
+                        <img src="static/instagram.svg" alt="Instagram">
                     </a>
                     <a href="https://github.com/LWYRUP1337" target="_blank" class="social-link">
-                        <img src="./img/SVG/github.svg" alt="gitHub">
+                        <img src="static/github.svg" alt="gitHub">
                     </a>
                 </div>
             </section>

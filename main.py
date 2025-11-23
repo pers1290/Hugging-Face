@@ -2,7 +2,6 @@ from flask import Flask, render_template, redirect, url_for, request, session, f
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from text_generator import get_ai_text
-from img_generator import generate_image
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5457fae2a71f9331bf4bf3dd6813f90abeb33839f4608755ce301b9321c6'
@@ -64,7 +63,7 @@ with app.app_context():
 
 @app.route('/')
 def home():
-    return redirect(url_for('login'))
+    return render_template('main-page.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
