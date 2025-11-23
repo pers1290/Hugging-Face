@@ -30,7 +30,7 @@ function toggleMenu() {
 <body> 
 
     <div class="top-buttons">
-        <button type="button" class="text">Text</button>
+        <button type="button" class="text" onclick="window.location.href='{{ url_for('chat_page_text') }}'">Text</button>
         <button type="button" class="active image">Image</button>
     </div>
 
@@ -49,13 +49,52 @@ function toggleMenu() {
     </div>
 
     <div class="styles_image">
-        <button type="button" class="realism">Realism</button>
-        <button type="button" class="fantasy">Fantasy</button>
-        <button type="button" class="anime">Anime</button>
-        <button type="button" class="digital art">Digital art</button>
-        <button type="button" class="oil painting">Oil painting</button>
-        <button type="button" class="fast">Fast</button>
+    <button type="button" class="style-btn active" data-style="realism">Realism</button>
+    <button type="button" class="style-btn" data-style="fantasy">Fantasy</button>
+    <button type="button" class="style-btn" data-style="anime">Anime</button>
+    <button type="button" class="style-btn" data-style="digital art">Digital art</button>
+    <button type="button" class="style-btn" data-style="oil painting">Oil painting</button>
+    <button type="button" class="style-btn" data-style="fast">Fast</button>
     </div>
+
+<script>
+document.querySelectorAll('.style-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        document.querySelectorAll('.style-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        this.classList.add('active');
+
+        const selectedStyle = this.getAttribute('data-style');
+        localStorage.setItem('selectedStyle', selectedStyle);
+    });
+});
+</script>
+
+<style>
+.style-btn {
+    padding: 8px 16px;
+    margin: 4px;
+    border: 1px solid #ddd;
+    background: #f8f9fa;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.style-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+}
+
+.style-btn:hover:not(.active) {
+    background: #e9ecef;
+    border-color: #adb5bd;
+}
+</style>
 
 </body>
 

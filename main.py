@@ -78,7 +78,7 @@ def login():
             session.permanent = True
             session['name'] = user.username
             session['user_id'] = user.id
-            return redirect(url_for('personal_account'))
+            return redirect(url_for('chat_page_text'))
         else:
             flash('Invalid username or password')
 
@@ -156,7 +156,7 @@ def registration():
             session['email'] = email
             session['user_id'] = new_user.id  # ДОБАВЛЕНО: сохраняем ID пользователя
 
-            return redirect("/personal_account") # ФАЙЛ С ЗАПРОСАМИ
+            return redirect("/chat_page_text") # ФАЙЛ С ЗАПРОСАМИ
 
         except Exception as e:
             db.session.rollback()
@@ -167,8 +167,8 @@ def registration():
                                    value_1=value_1, value_2=value_2, value_3=value_3)
 
 
-@app.route('/personal_account')
-def personal_account():
+@app.route('/chat_page_text')
+def chat_page_text():
     if 'name' not in session:  # ИСПРАВЛЕНО: проверяем только имя
         flash('Пожалуйста, войдите в систему')
         return redirect(url_for('login'))
@@ -186,7 +186,28 @@ def personal_account():
             return redirect(url_for('login'))
 
     user_chat_sessions = ChatSession.query.filter_by(s_u_id=user_id).all()
-    return render_template('personal_account.html',
+    return render_template('chat_page_text.html',
+                           username=session['name'],
+                           chat_sessions=user_chat_sessions)
+
+@app.route('/chat_page_image')
+def chat_page_image():
+    if 'name' not in session:
+        flash('Пожалуйста, войдите в систему')
+        return redirect(url_for('login'))
+
+    user_id = session.get('user_id')
+    if not user_id:
+        user = User.query.filter_by(username=session['name']).first()
+        if user:
+            user_id = user.id
+            session['user_id'] = user_id
+        else:
+            flash('Ошибка: пользователь не найден')
+            return redirect(url_for('login'))
+
+    user_chat_sessions = ChatSession.query.filter_by(s_u_id=user_id).all()
+    return render_template('chat_page_image.html',
                            username=session['name'],
                            chat_sessions=user_chat_sessions)
 
